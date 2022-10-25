@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth } from "context/auth-context";
-import { Form, Input } from "antd";
+import { Form, Input, Button } from "antd";
 import { useAsync } from "utils/use-async";
+import { LongButton } from "../unauthenticated-app/index";
 
 // interface Base {
 //   id: number
@@ -54,7 +55,9 @@ export const LoginScreen = ({
         <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
-        <button>登录</button>
+        <LongButton htmlType="submit" type="primary">
+          登录
+        </LongButton>
       </Form.Item>
     </Form>
   );

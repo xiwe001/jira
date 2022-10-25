@@ -1,8 +1,8 @@
 import React from "react";
 import { useAuth } from "context/auth-context";
-import { Form, Input } from "antd";
+import { Form, Input, Button } from "antd";
 import { useAsync } from "utils/use-async";
-
+import { LongButton } from "../unauthenticated-app/index";
 // interface Base {
 //   id: number
 // }
@@ -68,7 +68,9 @@ export const RegisterScreen = ({
         <Input placeholder={"确认密码"} type="password" id={"cpassword"} />
       </Form.Item>
       <Form.Item>
-        <button>注册</button>
+        <LongButton htmlType="submit" type="primary">
+          注册
+        </LongButton>
       </Form.Item>
     </Form>
   );

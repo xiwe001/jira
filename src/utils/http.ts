@@ -87,9 +87,10 @@ let roseFavoriteNumber: FavoriteNumber = "6";
 type Person = {
   name: string;
   age: number;
+  gender: string;
 };
-const xiaoMing: Partial<Person> = {};
-const shenMiRen: Omit<Person, "name" | "age"> = {};
+const xiaoMing: Partial<Person> = { name: "xiaoMing" };
+const shenMiRen: Omit<Person, "name" | "age"> = { gender: "male" };
 type PersonKeys = keyof Person;
 type PersonOnlyName = Pick<Person, "name" | "age">;
 type Age = Exclude<PersonKeys, "name">;

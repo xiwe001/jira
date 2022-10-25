@@ -1,3 +1,4 @@
+import { Input, Select, Form } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 export interface User {
@@ -18,40 +19,41 @@ interface SearchPanelProps {
   setParam: (param: SearchPanelProps["param"]) => void;
 }
 
-const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
-  const selectChange = (evt: ChangeEvent<HTMLSelectElement>) => {
-    // console.log(evt.target);
-    setParam({ ...param, personId: evt.target.value });
-  };
-
-  const inputChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setParam({
-      ...param,
-      name: evt.target.value,
-    });
-  };
+export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
   return (
-    <form action="">
-      <input
-        title="input1"
-        type="text"
-        value={param.name}
-        onChange={inputChange}
-      />
-      <select
-        title="selectPerson"
-        value={param.personId}
-        onChange={selectChange}
-      >
-        <option value={""}>负责人</option>
-        {users.map((user) => (
-          <option key={user.id} value={user.id}>
-            {user.name}
-          </option>
-        ))}
-      </select>
-    </form>
+    <Form style={{ marginBottom: "2rem" }} layout={"inline"}>
+      <Form.Item>
+        {/*setParam(Object.assign({}, param, {name:evt.target.value}))*/}
+        <Input
+          placeholder={"项目名"}
+          type="text"
+          value={param.name}
+          onChange={(evt) =>
+            setParam({
+              ...param,
+              name: evt.target.value,
+            })
+          }
+        />
+      </Form.Item>
+      <Form.Item>
+        <Select
+          value={param.personId}
+          onChange={(value) =>
+            setParam({
+              ...param,
+              personId: value,
+            })
+          }
+        >
+          <Select.Option value={""}>负责人</Select.Option>
+          {users.map((user) => (
+            <Select.Option key={user.id} value={user.id}>
+              {user.name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+    </Form>
   );
 };
-
-export { SearchPanel };

@@ -24,7 +24,9 @@ export const AuthenticatedApp = () => {
   const { logout } = useAuth();
   return (
     <>
-      <button onClick={logout}>Log out!</button>
+      <Button type="primary" onClick={logout}>
+        Log out!
+      </Button>
       <ProjectListPage />
     </>
   );
